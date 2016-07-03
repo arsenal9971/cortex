@@ -1,0 +1,55 @@
+language: python
+
+python:
+  - "3.5"
+
+services:
+  – postgresql
+
+sudo: required
+
+dist: trusty
+
+cache:
+  directories:
+    - $XDG_CACHE_HOME/pip
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log
+
+env:
+  global:
+    - DATABASE_URL=postgres://postgres@127.0.0.1:5432/worldbrain
+    - DJANGO_CONFIGURATION=Travis
+    - DJANGO_SECRET_KEY=0123456789abcdefghijklmnopqrstuvwyxz
+    - XDG_CACHE_HOME=$HOME/.cache
+    - DJANGO_SETTINGS_MODULE=worldbrain.settings
+  matrix:
+    - TEST_ENV=test
+    - TEST_ENV=check
+
+install:
+  - travis_retry pip install -U pip wheel
+  - travis_retry pip install -U -r requirements/travis.txt -e .
+
+before_script:
+  - psql -c 'create database worldbrain;' -U postgres
+  - python manage.py makemigrations cortex
+  - export PYTEST_ADDOPTS="-vv -s --cov=worldbrain --dc=Travis"
+
+script:
+  - echo "TEST_ENV=$TEST_ENV"
+  - |
+    set -e
+    case "$TEST_ENV" in
+      test)
+        make test ;;
+      check)
+        make check ;;
+      *)
+        echo "Unknown TEST_ENV: $TEST_ENV."
+        exit 1;;
+    esac
+after_success:
+  - if [ -f .coverage ]; then codecov --env TEST_ENV --token=f3d8644a-f484-4fa2-b2e1-33d8ca0ec0c2; fi
+notifications:
+  email: false

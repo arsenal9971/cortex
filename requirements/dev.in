@@ -1,0 +1,13 @@
+-r base.in
+
+ipdb
+pylama
+pip-tools
+pytest-testmon
+pytest-watch
+envdir
+pytest-capturelog
+pytest-django
+django-extensions
+codecov
+pytest-cov

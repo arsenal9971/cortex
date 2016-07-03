@@ -1,0 +1,10 @@
+django
+django-configurations
+dj-database-url
+psycopg2
+enum34
+django_fsm
+django-fsm-admin
+django-fsm-log
+djangorestframework
+celery

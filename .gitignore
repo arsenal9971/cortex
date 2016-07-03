@@ -1,0 +1,6 @@
+.testmondata
+*.pyc
+envdir/
+*egg-info/
+items.json
+.coverage

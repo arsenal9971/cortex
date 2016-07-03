@@ -1,0 +1,12 @@
+[run]
+omit =
+    worldbrain/cortex/migrations/*
+    worldbrain/settings.py
+    worldbrain/__init__.py
+    worldbrain/*/__init__.py
+    worldbrain/cortex/tests/*
+
+[report]
+exclude_lines =
+    raise NotImplementedError
+    def __str__
