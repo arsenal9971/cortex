@@ -8,7 +8,7 @@
 It is a [django][django] and [django-rest-framework][drf] powered application.
 
 # Status
-This project is in the initial bootstrap stages and as such is lacking many things.
+Please take a look if you can handle issues [#48][48], [#49][49], [#50][50] or [#23][23]!
 
 Please help us to change this! Join us at our [gitter chat][chat].
 
@@ -85,3 +85,7 @@ In the mean time, please check our [issues][iss] list for things to do.
 [python-pip]: https://pip.pypa.io/en/stable/installing/
 [iss]: https://github.com/WorldBrain/cortex/issues
 [chat]: https://gitter.im/WorldBrain/webmarks
+[48]: https://github.com/WorldBrain/cortex/issues/48
+[49]: https://github.com/WorldBrain/cortex/issues/49
+[50]: https://github.com/WorldBrain/cortex/issues/50
+[23]: https://github.com/WorldBrain/cortex/issues/23
